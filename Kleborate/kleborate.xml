@@ -1,0 +1,51 @@
+<tool id="kleboratetool" name="Kleborate" version="0.1.0">
+  <description>Kleborate is a tool to screen genome assemblies of Klebsiella pneumoniae</description>
+ <requirements>
+  <requirement type="package" version="2.0.4">kleborate</requirement>
+ <requirement type="package" version="0.5.1">kaptive</requirement>
+</requirements>
+
+  <command>kleborate -a `echo $input | tr ',' ' '` $r $kaptive_k $kaptive_o -o $output </command>
+ 
+  <inputs>
+  <param format="fasta" name="input" type="data" label="Genome fasta file : " multiple="true" display="checkboxes"/>
+ 
+  <param name="r" type="select" label="Turn on resistance genes screening (default: no resistance gene screening):">
+            <option value="">no</option>
+            <option value="-r">yes</option>
+          </param>
+
+          <param name="kaptive_k" type="select" label="Turn on Kaptive screening of K loci (default: do not run Kaptive for K loci):">
+    <option value="">no</option>
+    <option value="--kaptive_k">yes</option>
+          </param>
+
+          <param name="kaptive_o" type="select" label="Turn on Kaptive screening of O loci (default: do not run Kaptive for O loci):">
+            <option value="">no</option>
+            <option value="--kaptive_o">yes</option>
+    </param> 
+   
+ </inputs>
+
+ <outputs>  
+    <data format="tabular" name="output" />
+ </outputs>
+
+ <tests>
+    <test>
+    <param name="input" value="KP011_S63.scfd.fasta " />
+    <param name="input" value="KP012_S64.scfd.fasta " />
+        <param name="r" value="-r"/>
+<param name="kaptive_k" value="--kaptive_k"/>
+<param name="kaptive_o" value=""/>
+        <output name="output" file="Kleborate_results.txt" />
+    </test>
+</tests>
+
+  <help>
+For full documentation, please go to the Kleborate wiki (https://github.com/katholt/Kleborate/wiki)
+  </help>
+  <citations>
+  <citation type="doi">10.1101/2020.12.14.422303</citation>
+        </citations> 
+</tool>

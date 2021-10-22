@@ -1,0 +1,86 @@
+<tool id="kakstool" name="kaks_calculator" version="2.0.1">
+<description> A toolbox based on integrating gamma methods and sliding window strategy </description>
+
+ <requirements>
+  <requirement type="package" version="2.0.1">kakscalculator2</requirement>
+</requirements>
+
+<command>KaKs_Calculator '-i' $input '-c' $c '-m' $m '-o' $output </command>
+
+<inputs>
+	<param format="axt" name="input" type="data" label="Axt alignment files :" multiple="true" display="checkboxes"/>
+
+<param name="c" type="select" label="Genetic code table (Default = 1-Standard Code):">	
+<option value="1">Standard Code</option> 
+<option value="2">Vertebrate Mitochondrial Code</option> 
+<option value="3">Yeast Mitochondrial Code</option> 
+<option value="4">Mold Mitochondrial Code</option> 
+<option value="5">Invertebrate Mitochondrial Code</option> 
+<option value="6">Ciliate, Dasycladacean and Hexamita Code</option> 
+
+<option value="10">Euplotid Nuclear Code</option>
+<option value="11">Bacterial and Plant Plastid Code</option>  
+<option value="12">Alternative Yeast Nuclear Code</option> 
+<option value="13">Ascidian Mitochondrial Code</option> 
+<option value="14">Alternative Flatworm Mitochondrial Code</option> 
+<option value="15">Blepharisma Nuclear Code</option> 
+<option value="16">Chlorophycean Mitochondrial Code</option> 
+ 
+<option value="21">Trematode Mitochondrial Code</option>
+<option value="22">Scenedesmus obliquus mitochondrial Code</option>
+<option value="23">Thraustochytrium Mitochondrial Code</option>
+</param>
+
+
+
+<param name="m" type="select" label="Methods for estimating Ka and Ks and theirs references (Default = MA) :">
+<option value="NG">NG (Nei, M. and Gojobori, T. (1986) Mol. Biol. Evol., 3, 418-426.)</option>
+<option value="LWL">LWL (Li, W.H., Wu, C.I. and Luo, C.C. (1985) Mol. Biol. Evol., 2, 150-174.)</option>
+<option value="LPB">LPB (Li, W.H. (1993) J. Mol. Evol., 36, 96-99.    Pamilo, P. and Bianchi, N.O. (1993) Mol. Biol. Evol., 10, 271-281.</option>
+<option value="MLWL">MLWL (Tzeng, Y.H., Pan, R. and Li, W.H. (2004) Mol. Biol. Evol., 21, 2290-2298.)</option>
+<option value="MLPB">MLPB (Tzeng, Y.H., Pan, R. and Li, W.H. (2004) Mol. Biol. Evol., 21, 2290-2298.)</option>
+<option value="GY">GY (Goldman, N. and Yang, Z. (1994) Mol. Biol. Evol., 11, 725-736.)</option>
+<option value="YN">YN (Yang, Z. and Nielsen, R. (2000) Mol. Biol. Evol., 17, 32-43.)</option>
+<option value="MYN">MYN (Zhang, Z., Li, J. and Yu, J. (2006) BMC Evolutionary Biology, 6, 44.)</option>
+<option value="MS">MS (Model Selection according to the AICc)</option> 
+<option value="MA">MA (	Model Averaging on a set of candidate models) </option> 
+<option value="GNG">GNG (Wang, DP., Zhang, S., He, FH., Zhu, J.,Hu, SN. and Yu, J.(2009) Genomics, Proteomics and Bioinformatics. In press.) </option> 
+<option value="GLWL">GLWL (same)</option> 
+<option value="GLPB">GLPB (same)</option> 
+<option value="GMLWL">GMLWL (same)</option> 
+<option value="GYN">GYN (same)</option>
+<option value="GMYN">GMYN (Wang, DP., Wan, HL., Zhang, S. and Yu, J. (2009) Biology Direct, 4:20 (16 June 2009)) </option>
+</param>
+
+</inputs>
+
+<outputs>
+<data format="tabular" name="output"/>
+</outputs>
+
+<tests>
+    <test>
+    <param name="input" value="example.axt" />
+        <param name="c" value="1"/>
+<param name="m" value="NG"/>
+        <output name="output" file="out" />
+    </test>
+</tests>
+
+<help>
+-Please send bugs or advice to Da-Peng Wang at wangdp@big.ac.cn or Yu-Bin Zhang at ybzhang@big.ac.cn.
+
+-More information about the Genetic Codes: http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?mode=c
+
+-Git: https://github.com/kullrich/kakscalculator2
+ </help>
+
+<citations>
+<citation type="doi">10.1016/S1672-0229(10)60008-3</citation>
+
+	<citation type="doi">10.1186/1745-6150-4-20</citation>
+
+	<citation type="doi">S1672-0229(08)60040-6</citation>
+
+</citations>
+</tool>

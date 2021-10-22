@@ -1,0 +1,45 @@
+<tool id="mlplasmidstool" name="mlplasmids" version="0.1.0">
+  <description>consists of binary classifiers to predict contigs either as plasmid-derived or chromosome-derived</description>
+  <command> Rscript '/home/linuxipg/mlplasmids/scripts/run_mlplasmids.R' $input $output $prob_threshold "$species" </command>
+
+  <inputs>
+          <param format="fasta" name="input" type="data" label="Genome fasta file:" />
+
+          <param name="prob_threshold" type="float" min="0.5" max="0.99" value="0.5" label="probability threshold:" >
+          </param>
+
+          <param name="species" type="select" label="Species model:">
+		 
+	    <option value="Enterococcus faecium">Enterococcus faecium</option>
+	    <option value="Klebsiella pneumoniae">Klebsiella pneumoniae</option>
+            <option value="Escherichia coli">Escherichia coli</option>
+
+    </param>
+
+ </inputs>
+
+ <outputs>
+
+    <data format="tabular" name="output" />
+ </outputs>
+ <!--  <tests>
+	      <test>
+		            <param name="input" value="KO001_S85.scfd.fasta"/>
+			          <output name="output" file="output.tab"/>
+				      </test>
+				        </tests>
+-->
+  <help>
+	  Wiki : https://gitlab.com/sirarredondo/mlplasmids/-/wikis/home  
+
+ 
+	  Other way to use mlplasmids : https://sarredondo.shinyapps.io/mlplasmids/ 
+
+  </help>
+  
+  <citations>
+          <citation type="doi">10.1099/mgen.0.000224</citation>
+                </citations>
+</tool>
+
+

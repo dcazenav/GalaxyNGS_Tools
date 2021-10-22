@@ -1,0 +1,37 @@
+<tool id="clonalframeMLtool" name="clonalframeML" version="1.0">
+  <description>a software package that performs efficient inference of recombination in bacterial genomes</description>
+<requirements>
+  <requirement type="package" version="1.12">clonalframeml</requirement>
+</requirements>
+
+<command>ClonalFrameML $input $input1 $output ; mv $output'.ML_sequence.fasta' $output ; mv $output'.labelled_tree.newick' $output1 ; mv $output'.em.txt' $output2 </command>
+  <inputs>
+	  <param format="newick" name="input" type="data" label="Newick file : " multiple="false" display="checkboxes"/>
+	  <param format="fasta" name="input1" type="data" label="Alignement fasta file : " multiple="false" display="checkboxes"/>
+
+ </inputs>
+
+ <outputs>
+	 <data format="fasta" name="output" label="reduced Fasta Alignment" />
+	 <data format="newick" name="output1" label="labelled newick tree" />
+	 <data format="tabular" name="output2" label="em.txt" />
+ </outputs>
+
+ <tests>
+    <test>
+            <param name="input" value="tree_45ind_190kSNP.withST.nwk" />
+            <param name="input" value="190ksnp_alignment_KP2.fa" />
+        <output name="output" file="results.txt" />
+    </test>
+</tests>
+
+  <help>
+For full documentation, please go to the ClonalframeML wiki (https://github.com/katholt/Kleborate/wiki)
+  </help>
+  <citations>
+         <citation type="doi">10.1371/journal.pcbi.1004041</citation>
+                </citations>
+</tool>
+
+
+
